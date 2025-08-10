@@ -1,0 +1,44 @@
+torch installed to slow using local machine.
+even using uv still slow
+use sudo for system wide installations
+even sudo pip not allowed need to install system wide using apt
+but uv could not use sudo
+ady install python3-torch but could not import torch
+oh apparently there is conflict where i ady installed torch in venv using uv and then i install using apt, the python session tried to import from uv but then have something that holds it back, when i exit venv and install back python3-torch i can import torch, but could import torchvision and torchaudio
+what the hell is difference between import torch and import pytorch
+plus why apt install much faster and library much smaller in size
+apt install python3-tochvision and python3-torchaudio has no installtion candidaites
+
+
+i thought this only applies to hugging face spaces but even to my kali linux machine
+
+>>> import torch
+/home/lancer/Downloads/Projects/Test-Torch/venv/lib/python3.13/site-packages/torch/_subclasses/functional_tensor.py:275: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:81.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+>>> 
+
+
+if torch needed numpy why can't just installed together like how scikit-learn install scipy?
+
+my main goal is to run this code , and apparently i don't need torchvision and torchaudio to run it as suggested from qwen and torch documetnations
+also i cant use python3-torch when i use venv like i mentioned before
+
+```python
+from transformers import pipeline
+
+finction_categories = ["Fiction", "Nonfiction"]
+
+pipe = pipeline("zero-shot-classification",
+                model="facebook/bart-large-mnli",
+                device="mps")
+```
+im no confuse. why can't i run this code in any virtual instance at all? 
+huggingface spaces docker jupyterlab X
+kagglehub  
+
+can certainly 
+-> pip install torch nicely and import transformers but i cant initialize pipeline 
+whit this given output ref : https://www.kaggle.com/code/normannurcy/test-torch/edit  
+
+
+had to test for virtual env or conda instal torch torchvison and torchaudio, and follow the guidelines and run the following codes
